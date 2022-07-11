@@ -27,7 +27,8 @@ def nextMove(depth):
         alpha = -100000
         beta = 100000
         for move in board.legal_moves:
-            if (random.randint(0,5) == 0):
+            print("evaluating...")
+            if (random.randint(0,10) == 0):
                 board.push(move)
                 boardValue = -alphabeta(-beta, -alpha, depth - 1)
                 if boardValue > bestValue:
@@ -180,15 +181,14 @@ def getBoardValue():
         return -eval
 
 # use this for computer move
-mov = nextMove(5)
+# rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1
+board = chess.Board("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1")
+
+mov = nextMove(4)
 board.push(mov)
 print(board)
+print(board.fen())
 print()
 # use this for human move, where e5 is the example move
-board.push_san("e5")
+board.push_san("e6")
 print(board)
-
-mov = nextMove(5)
-board.push(mov)
-print(board)
-print()
